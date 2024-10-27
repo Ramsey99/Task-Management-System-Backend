@@ -1,7 +1,11 @@
 const {Router}=require("express");
 const{
-    createTask
+    createTask,
+    getTask
 }=require("../controllers/task.controller")
-const router = Router()
-router.route("/create").post(createTask);
+const {verifyJWT}=require('../middlewares/auth.middileware');
+const router = Router();
+router.use(verifyJWT);
+router.route("/create/:category_id").post(createTask);
+router.route("/getTask").get(getTask);
 module.exports=router;

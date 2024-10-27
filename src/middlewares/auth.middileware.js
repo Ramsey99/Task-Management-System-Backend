@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import { User } from "../models/user.model";
+const jwt=require("jsonwebtoken");
+const  User  =require ("../models/user.model");
 
-export const verifyJWT = async (req, res, next) => {
+ const verifyJWT = async (req, res, next) => {
   try {
     // Retrieve token from cookies or Authorization header
     const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
@@ -9,11 +9,10 @@ export const verifyJWT = async (req, res, next) => {
     // If no token found, send an unauthorized error
     if (!token) {
       return res.status(401).json({ message: "Unauthorized request. No token provided." });
-    }
+    }    
 
     // Verify token
     const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-
     // Check if the user exists
     const user = await User.findById(decodedToken?._id);
     if (!user) {
@@ -37,3 +36,6 @@ export const verifyJWT = async (req, res, next) => {
     return res.status(500).json({ message: "Internal server error." });
   }
 };
+
+module.exports={verifyJWT}
+

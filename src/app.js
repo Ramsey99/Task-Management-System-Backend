@@ -25,10 +25,4 @@ app.get('/',(req,res)=>{
 app.use("/api/users",userRouter);
 app.use("/api/task",taskRouter);
 
-
-
-
-
-
-
 module.exports={app};
