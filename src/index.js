@@ -29,7 +29,7 @@ const Category = require('./models/category.model');
   };
   
   // Call the function to seed the categories
-  seedCategories();
+ // seedCategories();
 
 connectDB().then(()=>{
     app.listen(process.env.PORT || 3000, () => {
