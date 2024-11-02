@@ -2,7 +2,7 @@ const {Router}=require("express");
 const{
     createTask,
     getTask
-}=require("../controllers/task.controller")
+}=require("../controllers/task.controller");
 const {verifyJWT}=require('../middlewares/auth.middileware');
 const router = Router();
 router.use(verifyJWT);
