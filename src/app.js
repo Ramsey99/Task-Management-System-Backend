@@ -19,10 +19,13 @@ app.use(express.static("public"))
 
 const userRouter=require('./routes/user.routes');
 const taskRouter=require('./routes/task.routes');
+const categoryRouter=require('./routes/category.routes')
 app.get('/',(req,res)=>{
     res.send('api is running');
 })
 app.use("/api/users",userRouter);
 app.use("/api/task",taskRouter);
+app.use("/api/category",categoryRouter);
+
 
 module.exports={app};
